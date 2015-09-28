@@ -26,8 +26,28 @@
 	margin-left: 50px;
 }
 
+.madlib-input
+{
+	margin: 10px;
+	padding: 2px;
+	font-size: 13px;
+}
+
+#submit-button
+{
+	margin: 10px;
+	padding: 5px;
+	font-size: 12px;
+}
+
 #passage
 {
 	margin: 10px 50px;
 	display: none;
+	word-wrap: normal;
+}
+
+#passage span
+{
+	word-wrap: normal;
 }
