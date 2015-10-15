@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+
+		<meta charset="UTF-8">
+
+	    <title>Classics Parts of Speech Visualized</title>
+
+	    <!-- CSS -->
+	    <link rel="stylesheet" type="text/css" href="sketch.css">
+		<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
+
+		<!-- JS -->
+
+	   	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.15/p5.min.js"></script>
+	   	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.15/addons/p5.dom.min.js"></script>
+	   	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.15/addons/p5.sound.min.js"></script>
+	   	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+	   	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	   	
+		<script src="rita-full.min.js"></script>
+
+	    <script src="sketch.js" type="text/javascript"></script>
+
+	</head>
+
+	<body>
+
+		<h1 id='viz-header'>Parts of Speech in <span class="classics">Classics</span></h1>
+
+	    <p id='viz-description'>Classic literature is often celebrated for the themes in their stories, but how are they constructed and how complex are they? Paste text or upload a text (.txt) file to find out!</p>
+
+
+	    <div id='classics-entry'>
+
+	      <input type="text" id='classics-title' placeholder="Title of Classic Novel" />
+
+	      <div id="drop_zone">Drag a File</div>
+	   
+	      <textarea id = "textinput" rows="10" cols="100" placeholder="Enter some text"></textarea><br/>
+	      <button id = "submit">Submit!</button>
+	    </div>
+
+	    <div id='viz-display'>
+
+
+	    </div>
+
+	</body>
+
+</html>
