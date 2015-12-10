@@ -133,10 +133,9 @@ function getInformation(twitIDs)
 			friendObjs.push({"id": handle, "location" : loc, "description" : des});
 		}
 		
-		// checkLength();
-		wordCountDesc();
-		wordCountLoc();
-	
+		checkLength();
+		
+		
 	});
 
 
@@ -152,14 +151,29 @@ function checkLength()
 
 	if(friendObjs.length === friendIDsRaw.length)
 	{
-		console.log("successfully got all descriptions and nothing is out of scope so far. Now printing all descriptions.");
+		// debugging - checking that all friends were stored
+		
+		// console.log("successfully got all descriptions and nothing is out of scope so far. Now printing all descriptions.");
 
-		for(var l = 0; l < friendObjs.length; l++)
-		{
-			console.log(friendObjs[l].id + ": " + friendObjs[l].location + "\n" + friendObjs[l].description);
-		}
+		// for(var l = 0; l < friendObjs.length; l++)
+		// {
+		// 	console.log(friendObjs[l].id + ": " + friendObjs[l].location + "\n" + friendObjs[l].description);
+		// }
 
+		wordCount();
 	}
+
+}
+
+/*
+
+	wordCount - count words and word pairs in stored text
+
+*/
+function wordCount()
+{
+	wordCountDesc();
+	wordCountLoc();
 }
 
 
