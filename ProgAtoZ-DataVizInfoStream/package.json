@@ -1,0 +1,14 @@
+{
+  "name": "datavizinfostream",
+  "version": "1.0.0",
+  "description": "Data Viz and ProgA2Z final",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sweta Mohapatra",
+  "license": "ISC",
+  "dependencies": {
+    "twit": "^2.1.1"
+  }
+}
