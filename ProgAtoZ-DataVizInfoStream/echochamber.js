@@ -33,7 +33,7 @@ var myArgs = process.argv;
 var enteredTwitHandle = myArgs[2];
 
 // start instructions
-if(myArgs[2]==="help")
+if(myArgs[2]==="help" || myArgs[2] === undefined)
 {
 	console.log("Welcome to How Smooth is Your Echo Chamber!\nPeople tend to select their friends and sources of information that are very similar to themselves or share similar opinions. This tendency is called homophily. One key way this is done is based on location; people are more likely to make friends with others that are in the same general location as themselves. By not having a diverse set of relationships, the types of information a person consumes can be limited in the range of topics they cover and the types of opinions - thus, that person can get a limited vision of the world.");
 	console.log("\n\nIs that true for you? We are analyzing the locations of the people you follow on Twitter and can show you the top five places they're from and how many people are from there. Enter node echochamber.js plus your Twitter handle (no at sign needed) to see the top five places your friends are from.");	
