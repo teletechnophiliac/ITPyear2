@@ -1,0 +1,144 @@
+<!-- Modified from Mike Bostock's Bar Tutorial - bl.ocks.org/mbostock/3885304 -->
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<style>
+
+.bar {
+  fill: blue;
+}
+
+.bar:hover {
+  fill: green;
+}
+
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+</style>
+
+<body>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+
+<script>
+
+	var margin = {top: 20, right: 20, bottom: 30, left: 40},
+	    width = 960 - margin.left - margin.right,
+	    height = 500 - margin.top - margin.bottom;
+
+	var x = d3.scale.ordinal()
+	    .rangeRoundBands([0, width], .1);
+
+	var y = d3.scale.linear()
+	    .range([height, 0]);
+
+	var xAxis = d3.svg.axis()
+	    .scale(x)
+	    .orient("bottom");
+
+	var yAxis = d3.svg.axis()
+	    .scale(y)
+	    .orient("left")
+	    .ticks(10);
+
+	var svg = d3.select("body").append("svg")
+	    .attr("width", width + margin.left + margin.right)
+	    .attr("height", height + margin.top + margin.bottom)
+	  .append("g")
+	    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+	//get public telephone complaints
+	d3.csv("https://data.cityofnewyork.us/resource/iipe-cqx6.csv?$where=created_date%20%3C=%20%272014-12-31T23:59:59%27%20AND%20created_date%20%3E=%20%272014-12-01T00:00:00%27", function (error, data) 
+	{
+		//error handling
+		if (error) throw error;
+
+		//create array of boroughs and count number of complaints in each borough
+		var borough = [0, 0, 0, 0, 0, 0]; //Manhattan, Brooklyn, Queens, Bronx, Staten Island, Unspecified/Other
+		
+		data.forEach(function (d)
+			{
+				if(d.Borough.toLowerCase() == "manhattan")
+				{
+					borough[0]++;
+				}
+				else if (d.Borough.toLowerCase() == "brooklyn")
+				{
+					borough[1]++;
+				}
+				else if (d.Borough.toLowerCase() == "queens")
+				{
+					borough[2]++;
+				}
+				else if (d.Borough.toLowerCase() == "bronx")
+				{
+					borough[3]++;
+				}
+				else if (d.Borough.toLowerCase() == "staten island")
+				{
+					borough[4]++;
+				}
+				else
+				{
+					borough[5]++;
+				}
+			}
+		);
+
+		//debugging
+		// console.log("Borough: ");
+		
+		// for	(index = 0; index < borough.length; index++) 
+		// {
+		// 	console.log(borough[index]);
+		// }
+
+		//set x and y axis, scale to max number of complaints in a borough
+		x.domain(["Manhattan", "Brooklyn", "Queens", "Bronx", "Staten Island", "Unspecified/Other"]);
+		y.domain([0, Math.max.apply(Math, borough)]);
+
+		svg.append("g")
+		.attr("class", "x axis")
+		.attr("transform", "translate(0," + height + ")")
+		.call(xAxis);
+
+		svg.append("g")
+		.attr("class", "y axis")
+		.call(yAxis)
+		.append("text")
+		.attr("transform", "rotate(-90)")
+		.attr("y", 6)
+		.attr("dy", ".71em")
+		.style("text-anchor", "end")
+		.text("Number of Complaints");
+
+		svg.selectAll(".bar")
+		.data(borough)
+		.enter().append("rect")
+		.attr("class", "bar")
+		.attr("x", function(d,i) {
+			return x(x.domain()[i]); 
+		})
+		.attr("width", x.rangeBand())
+		.attr("y", y)
+		.attr("height", function(d) { return height - y(d); });
+	});
+
+</script>
