@@ -11,3 +11,10 @@ Work done during my time at NYU's Interactive Telecommunications Program
   <li>Programming A to Z</li>
   <li>Data Visualization from 2D to 4D</li>
 </ul>
+
+<i>Spring 2016</i>
+<p>
+<ul>
+  <li>Sensory Driven Storytelling</li>
+  <li>Thesis</li>
+</ul>
