@@ -188,7 +188,7 @@ function createMadlibTextboxes()
 		textboxCreated = document.createElement('input');
 		textboxCreated.setAttribute('type','text');
 		textboxCreated.setAttribute('class', 'madlib-input')
-		textboxCreated.setAttribute('placeholder', arrPOSReplaced[i]);
+		textboxCreated.setAttribute('placeholder', (i+1) + ": " + arrPOSReplaced[i]);
 
 		//add to madlibs-entry
 		document.getElementById('madlibs-entry').appendChild(textboxCreated);
@@ -347,6 +347,7 @@ function changeTheDOM()
 {
 	console.log('DOM change call');
 	document.getElementById('passage').setAttribute('style','display: block');
+	document.getElementById('playagain').setAttribute('style','display: block');
 	document.getElementById('madlibs-entry').setAttribute('style','display: none');
 
 	document.getElementById('classics').innerHTML = selectedPassageTitle;
