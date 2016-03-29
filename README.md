@@ -26,7 +26,9 @@ Work done during my time at NYU's Interactive Telecommunications Program
 
 <b>Sensory Driven Storytelling</b>
 
-<i>Let It Rain</i> Unity project where one player controls a rain cloud to make it rain on the second person being tracked through a Kinect who is trying to get away from the rain.
+<i>Let It Rain (Assignment 3)</i> - Unity project where one player controls a rain cloud to make it rain on the second person being tracked through a Kinect who is trying to get away from the rain. 
+
+<i>Let It Rain Proof of Concept (Assignment 2)</i> - initial prototype of Let It Rain's Player 1 interaction using keyboard and mouse
 
 <b>Designing for the Met</b>
 
