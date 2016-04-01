@@ -178,7 +178,7 @@ var speed = 1;			//player's Speed skill (default is 1)
 */
 window.addEventListener("load", function load()
 {
-	console.log("window loaded.");
+	// console.log("window loaded.");
 	
 	var pageContainer = document.getElementById('page-container');
 
@@ -187,7 +187,7 @@ window.addEventListener("load", function load()
 		setData();
 		document.getElementById("next-button").addEventListener('touchstart',nextPage,false);
 		document.getElementById("back-button").addEventListener('touchstart',prevPage,false);
-		var arrChoice = document.getElementsByClassName("choice")
+		var arrChoice = document.getElementsByClassName("choice");
 
 		for(var i = 0; i < arrChoice.length; i++)
 		{
@@ -204,28 +204,8 @@ window.addEventListener("load", function load()
 
 /*
 
-    touchDetected() - runs when the user taps anywhere on the screen
-
-*/
-function touchDetected()
-{
-	alert("touch detected");
-
-	var pageContainer = document.getElementById('page-container');
-
-    pageContainer.style.opacity = 0;
-
-    var transitionEvent = whichTransitionEvent(pageContainer);
-
-	transitionEvent && pageContainer.addEventListener(transitionEvent, function()
-		{
-			window.location.href="instructions.html";
-		});
-}
-
-/*
-
 	whichTransitionEvent - setup for callback check - credit to http://davidwalsh.name/css-animation-callback
+	Used for transition to main page after tutorial ends
 
 */
 function whichTransitionEvent(element)
@@ -236,7 +216,7 @@ function whichTransitionEvent(element)
       'OTransition':'oTransitionEnd',
       'MozTransition':'transitionend',
       'WebkitTransition':'webkitTransitionEnd'
-    }
+    };
 
     for(var t in transitions){
         if( element.style[t] !== undefined )
@@ -262,10 +242,10 @@ function setData()
 	displayTextEntry(pageText[pageCount][3]);
 
 	//check if choice screen
-	displayChoices(pageText[pageCount][4])
+	displayChoices(pageText[pageCount][4]);
 	
 	//display stats
-	displayStatsSummary()
+	displayStatsSummary();
 	
 }
 
@@ -341,7 +321,7 @@ function nextPage()
 */
 function prevPage()
 {
-
+	//move back to splashpage if on first page of tutorial
 	if((pageCount - 1) < 0)
 	{
 		var pageContainer = document.getElementById('page-container');
@@ -369,7 +349,7 @@ function prevPage()
 
 /*
 
-	displayTextEntry - check to see if text entry is neededon this page
+	displayTextEntry - check to see if text entry is needed on this page
 
 */
 function displayTextEntry(show)
@@ -496,6 +476,7 @@ function setSkillBonuses(first,second,third)
 /*
 
 	choiceMade - event handler for when user makes a choice
+	Parameters - HTML element that was tapped on, page user is currently making choice on
 
 */
 function choiceMade(element,page)
@@ -688,8 +669,10 @@ function showChosenWeakness()
 /*
 
 	changeChoice - change page so user can change choice
+	Parameter: choice that user is changing
 
 */
+//TODO: don't default to changing weakness
 function changeChoice(choiceToChange)
 {
 	if(choiceToChange == "guide")
