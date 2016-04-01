@@ -9,6 +9,7 @@
 
 */
 
+//TODO: refactor to make a data type 
 var pageText = [
 	[
 		"Prove Yourself", 
@@ -59,20 +60,21 @@ var pageText = [
 		false,
 		true,
 	],
+	[	
+		"Review Your Choices", 
+		"Here are your current stats based on your weakness and guide choices. If you want to change something, tap on it to be taken to that page.<br/><br/><h4 style=\"font-family: \'Goudy Trajan\',serif;\">Current Stats</h4><br/><p><strong>Wisdom: </strong><span id=\"wisdom-stat\"></span><br/><strong>Strength:</strong><span id=\"strength-stat\"></span><br/><strong>Speed:</strong><span id=\"speed-stat\"></span><br/><br/><h4 style=\"font-family: \'Goudy Trajan\',serif;\">Guide</h4><br/><img id=\"chosen-guide\" src=\"\/\/:0\"></img><div id=\"chosen-guide-bonus\"></div><br/><h4 style=\"font-family: \'Goudy Trajan\',serif;\">Weakness</h4><br/><img id=\"chosen-weakness\" src=\"\/\/:0\"></img><div id=\"chosen-weakness-bonus\"></div>",
+		"Choice made",
+		false,
+		false,
+	],
 	[
 		"Gameplay", 
-		"",
-		"Got it",
+		"The object of the game is to win the favor of as many gods as possible within a 15 minute trial. To do this, you must talk to the statue representing the god.<br/><br/>If you convince the god to think about backing you they will give you a <strong>quest</strong>, a series of tasks to complete to win them over. This could be a puzzle, or a challenge to beat your competitors in <strong>battle</strong>.<br/><br/>Your conversation is not guaranteed to go well. Your weakness might get in the way, and you might accidentally insult the god and they may curse you to try again later.<br/><br/>The player who completes the most quests wins the game. Good luck!",
+		"Start game",
 		false,
 		false,
 	],
-	[
-		"Are You Ready?", 
-		"",
-		"Let's go!",
-		false,
-		false,
-	],
+	
 ];
 
 /*
@@ -84,11 +86,9 @@ var pageText = [
 	3 - Description
 	4 - Skills Bonus
 	5 - Image path
-	6 - Wisdom skill bonus points
-	7 - Strength skill bonus points
-	8 - Speed skill bonus points
 
 */
+//TODO: refactor to make a data type 
 var guideChoices =[
 	[
 		"Hermes",
@@ -130,25 +130,26 @@ var guideChoices =[
 	7 - Speed skill bonus points
 
 */
+//TODO: refactor to make a data type 
 var weaknessChoices =[
 	[
 		"Lust",
 		"Hit on the right god and you might get lucky. On the other hand…",
 		"+1 Speed, -2 Wisdom",
-		"../img/hermesheader2x.png",
+		"../img/lustheader2x.png",
 	],
 	[
 		"Anger",
 		"You might say the wrong thing to the wrong god with that quick temper",
 		"+1 Strength, -2 Wisdom",
-		"../img/athenaheader2x.png",
+		"../img/angerheader2x.png",
 
 	],
 	[
 		"Pride",
 		"Hopefully your head is a good cushion to land on when you fall",
 		"+1 Wisdom, -2 Speed",
-		"../img/dionysusheader2x.png",
+		"../img/prideheader2x.png",
 
 	]
 ];
@@ -156,18 +157,23 @@ var weaknessChoices =[
 var pageCount = 0;		//tracks which page of setup user is on
 
 //Player data
+//TODO: refactor to make a data type
+
 var name;				//player name
 var	guide;				//selected guide
 var guideElement;		//DOM element name correlating to selected guide
 var weakness; 			//selected weakness
 var weaknessElement;	//DOM element name correlating to selected guide
-var wisdom = 1;			//player's Wisdom skill
-var strength = 1;		//player's Strength skill
-var speed = 1;			//player's Speed skill
+var wisdom = 1;			//player's Wisdom skill (default is 1)
+var strength = 1;		//player's Strength skill (default is 1)
+var speed = 1;			//player's Speed skill (default is 1)
+
+
+/*	Functions	*/
 
 /*
 
-	Load function
+	Load function - window load and setup
 
 */
 window.addEventListener("load", function load()
@@ -257,6 +263,9 @@ function setData()
 
 	//check if choice screen
 	displayChoices(pageText[pageCount][4])
+	
+	//display stats
+	displayStatsSummary()
 	
 }
 
@@ -498,6 +507,7 @@ function choiceMade(element,page)
 		if(guideElement!= null && guideElement != element)
 		{
 			//fix skill bonuses
+			//TODO: dynamically populate skills rather than hardcoding
 
 			switch (guide)
 			{
@@ -519,6 +529,7 @@ function choiceMade(element,page)
 		guideElement = element;
 		document.getElementById(element).classList.add('choice-selected');
 
+		//TODO: dynamically populate skills rather than hardcoding
 		switch(element)
 		{
 			case "choice1":
@@ -544,7 +555,7 @@ function choiceMade(element,page)
 		if(weaknessElement!= null && weaknessElement != element)
 		{
 			//fix skill bonuses
-
+			//TODO: dynamically populate skills rather than hardcoding
 			switch(weakness)
 			{
 				case "Lust":
@@ -566,6 +577,7 @@ function choiceMade(element,page)
 		weaknessElement = element;
 		document.getElementById(element).classList.add('choice-selected');
 
+		//TODO: dynamically populate skills rather than hardcoding
 		switch(element)
 		{
 			case "choice1":
@@ -583,5 +595,111 @@ function choiceMade(element,page)
 				wisdom++;
 				speed-=2;
 		}
+	}
+}
+
+/*
+
+	displayStatsSummary - show stats values for review
+
+*/
+function displayStatsSummary()
+{
+	if(pageText[pageCount][0] == "Review Your Choices")
+	{
+
+		if(strength < 0)
+		{
+			document.getElementById("strength-stat").classList.add("negative");
+		}
+		if(wisdom < 0)
+		{
+			document.getElementById("wisdom-stat").classList.add("negative");
+		}
+		if(speed < 0)
+		{
+			document.getElementById("speed-stat").classList.add("negative");
+		}
+
+		document.getElementById("strength-stat").innerHTML = strength;
+		document.getElementById("speed-stat").innerHTML = speed;
+		document.getElementById("wisdom-stat").innerHTML = wisdom;
+
+		showChosenGuide();
+		showChosenWeakness();
+
+		document.getElementById('chosen-guide').addEventListener('touchstart',function(){changeChoice("guide")},false);
+		document.getElementById('chosen-weakness').addEventListener('touchstart',function(){changeChoice("weakness")},false);
+	}
+}
+
+/*
+
+	showChosenGuide - show guide for review
+
+*/
+function showChosenGuide()
+{
+
+	switch (guide)
+	{
+		case "Athena":
+			document.getElementById('chosen-guide').src="../img/athenaheader2x.png";
+			document.getElementById('chosen-guide-bonus').innerHTML = "<strong>Skills: </strong>" + guideChoices[1][3];
+			break;
+		case "Hermes":
+			document.getElementById('chosen-guide').src="../img/hermesheader2x.png";
+			document.getElementById('chosen-guide-bonus').innerHTML = "<strong>Skills: </strong>" + guideChoices[0][3];
+			break;
+		case "Dionysus":
+			document.getElementById('chosen-guide').src="../img/dionysusheader2x.png";
+			document.getElementById('chosen-guide-bonus').innerHTML = "<strong>Skills: </strong>" + guideChoices[2][3];
+			break;
+	}
+
+}
+
+/*
+
+	showChosenWeakness - show weakness for review
+
+*/
+function showChosenWeakness()
+{
+
+	switch (weakness)
+	{
+		case "Lust":
+			document.getElementById('chosen-weakness').src="../img/lustheader2x.png";
+			document.getElementById('chosen-weakness-bonus').innerHTML = "<strong>Skills: </strong>" + weaknessChoices[0][2];
+			break;
+		case "Anger":
+			document.getElementById('chosen-weakness').src="../img/angerheader2x.png";
+			document.getElementById('chosen-weakness-bonus').innerHTML = "<strong>Skills: </strong>" + weaknessChoices[1][2];
+			break;
+		case "Pride":
+			document.getElementById('chosen-weakness').src="../img/prideheader2x.png";
+			document.getElementById('chosen-weakness-bonus').innerHTML = "<strong>Skills: </strong>" + weaknessChoices[2][2];
+			break;
+	}
+
+}
+
+/*
+
+	changeChoice - change page so user can change choice
+
+*/
+function changeChoice(choiceToChange)
+{
+	if(choiceToChange == "guide")
+	{
+		pageCount = 4;
+		setData();
+	}
+	else
+	{
+		pageCount = 6;
+		setData();
 	}
 }

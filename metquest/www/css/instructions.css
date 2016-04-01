@@ -40,7 +40,7 @@
 /* text */
 #text-container
 {
-  max-height: 90vh;
+  margin-top: 10px;
   min-height: 85vh;
 }
 
@@ -128,7 +128,7 @@ button
   padding: 5px;
 }
 
-.choice-image
+.choice-image, #chosen-guide, #chosen-weakness
 {
   height: 60px;
   width: auto;
@@ -152,6 +152,16 @@ button
 .choice-selected
 {
   border:solid 2px #AD2000;
+}
+
+#wisdom-stat,#strength-stat,#speed-stat
+{
+  margin-left:5px;
+}
+
+.negative
+{
+  color: red;
 }
 
 /*
@@ -192,6 +202,14 @@ button
     padding: 20px 0;
     font-size: 32px;
   }
+
+  .choice-image, #chosen-guide, #chosen-weakness
+{
+  height: 50px;
+  width: auto;
+  margin-bottom: 10px;
+}
+
 
 }
 

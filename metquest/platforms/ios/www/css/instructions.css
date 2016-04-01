@@ -128,7 +128,7 @@ button
   padding: 5px;
 }
 
-.choice-image
+.choice-image, #chosen-guide, #chosen-weakness
 {
   height: 60px;
   width: auto;
@@ -152,6 +152,16 @@ button
 .choice-selected
 {
   border:solid 2px #AD2000;
+}
+
+#wisdom-stat,#strength-stat,#speed-stat
+{
+  margin-left:5px;
+}
+
+.negative
+{
+  color: red;
 }
 
 /*
