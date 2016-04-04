@@ -8,7 +8,6 @@
 	4 - (bool) is this a page where the user has to tap to make a choice?
 
 */
-
 //TODO: refactor to make a data type 
 var pageText = [
 	[
@@ -34,7 +33,7 @@ var pageText = [
 	],
 	[
 		"Your Guide", 
-		"Many gods have recognized your noble accomplishments, but on your final quest you must select one god to be your guide.<br/><br/>Your guide will give you certain skill advantages and be very helpful for some tasks. Choose wisely!",
+		"On your final quest you must select one god to help you if you need it.Your guide will give you certain skill advantages and be very helpful for some tasks.<br/><br/>Choose wisely!",
 		"Let me pick!",
 		false,
 		false,
@@ -48,7 +47,7 @@ var pageText = [
 	],
 	[
 		"Weakness", 
-		"Many gods have recognized your noble accomplishments, but on your final quest you must select one god to be your guide.<br/><br/>Your guide will give you certain skill advantages and be very helpful for some tasks. Choose wisely!",
+		"Every hero has an Achilles’ heel.For Achilles, it was his heel.<br/><br/>Your weakness could be the difference between getting a quest or being cursed by a god to wait a few minutes before trying again. ",
 		"Let me pick!",
 		false,
 		false,
