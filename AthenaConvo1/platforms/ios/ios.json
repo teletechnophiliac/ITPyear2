@@ -1,0 +1,39 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"CameraPreview\"><param name=\"ios-package\" onload=\"true\" value=\"CameraPreview\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "com.mbppower.camerapreview": {
+            "PACKAGE_NAME": "my.sample.app"
+        }
+    },
+    "dependent_plugins": {},
+    "modules": [
+        {
+            "file": "plugins/com.mbppower.camerapreview/www/CameraPreview.js",
+            "id": "com.mbppower.camerapreview.CameraPreview",
+            "pluginId": "com.mbppower.camerapreview",
+            "clobbers": [
+                "cordova.plugins.camerapreview"
+            ]
+        }
+    ],
+    "plugin_metadata": {
+        "com.mbppower.camerapreview": "0.0.8"
+    }
+}
