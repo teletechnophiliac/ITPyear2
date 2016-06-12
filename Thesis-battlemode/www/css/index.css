@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'Goudy Trajan';
+    src: url('../fonts/goudytrajan-regular-trial-webfont.eot');
+    src: url('../fonts/goudytrajan-regular-trial-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/goudytrajan-regular-trial-webfont.woff2') format('woff2'),
+         url('../fonts/goudytrajan-regular-trial-webfont.woff') format('woff'),
+         url('../fonts/goudytrajan-regular-trial-webfont.ttf') format('truetype'),
+         url('../fonts/goudytrajan-regular-trial-webfont.svg#goudy_trajan_regularregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700');
+
+h1, h3
+{
+	font-family: 'Goudy Trajan',serif;
+}
+
+p,span
+{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+  	font-size: 18px;
+}
+
+.negative
+{
+	color: #AD2000;
+}
+
+button
+{
+	position: relative;
+  	padding: 10px 30px;
+
+  	font-family: 'Roboto', sans-serif;
+  	font-weight: 500;
+  	font-size: 16px;
+  	border: none;
+  	background-color: #FED37F;
+}
+
+#score
+{
+	display:none;
+}

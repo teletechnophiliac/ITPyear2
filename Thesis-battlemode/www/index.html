@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
+        
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+       
+
+        <title>Battle Mode</title>
+
+    </head>
+    
+    <body>
+
+        <div class="app">
+            <h1>Battle!</h1>
+            
+            <div id="accel">
+                <h3>Stats</h3>
+                <p><strong>Wisdom:</strong> <span class="stat negative">-1</span></p>
+                <p><strong>Strength:</strong> <span class="stat">2</span></p>
+                <p><strong>Speed:</strong> <span class="stat">4</span></p>
+
+                <p>Your score for the battle will be based on your stats as well as how you swing the phone. Be careful not to let go!</p>
+                <br/>
+            </div>
+
+        </div>
+        
+        <button type="button" id="start-button">Start Battle</button>
+
+        <div id="score">
+            <p><strong>Your Score:</strong> <span id="player-score"></span></p>
+            <button type="button" id="restart-button">Battle Again?</button>
+        </div>
+
+
+
+    </body>
+</html>
